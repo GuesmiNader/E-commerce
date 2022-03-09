@@ -1,9 +1,10 @@
 import React from "react";
-import styled from "styled-components";
 import { Search, ShoppingCartOutlined } from "@mui/icons-material";
 import { Badge } from "@mui/material";
+import styled from "styled-components";
+
 const Container = styled.div`
-height: 60px;
+height: 62px;
 `;
 const Wrapper = styled.div`
 padding: 10px 20px;
@@ -36,7 +37,7 @@ align-items: center;
 margin-left: 25px;
 padding: 5px;
 `;
-const Input = styled.div`
+const Input = styled.input`
 border: none;
 `;
 const Logo = styled.div`

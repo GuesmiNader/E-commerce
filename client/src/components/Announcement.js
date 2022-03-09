@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Containner =styled.div`
+const Container =styled.div`
 height: 30px;
 background-color: teal;
 color:white;
@@ -12,7 +12,7 @@ font-weight: 500;
 `
 const Announcement = () => {
     return (
-        <Containner>Super Television Salesman</Containner>
+        <Container>Super Television Salesman</Container>
     )
 }
 
