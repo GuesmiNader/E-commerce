@@ -62,7 +62,7 @@ const Navbar = () => {
           </SearchContainer>
         </Left>
                 <Center>
-                    <Logo>Aloui Service</Logo>
+                    <Logo>Nader</Logo>
                 </Center>
                 <Right>
                     <MenuItem>Register</MenuItem>

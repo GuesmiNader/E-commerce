@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Email, Facebook, Instagram, MailOutline, Phone, Room, Twitter } from "@mui/icons-material";
+import { Facebook, Instagram, MailOutline, Phone, Room, Twitter } from "@mui/icons-material";
 const Container = styled.div`
 display: flex;
 `;
