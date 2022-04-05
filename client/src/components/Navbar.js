@@ -2,15 +2,18 @@ import React from "react";
 import { Search, ShoppingCartOutlined } from "@mui/icons-material";
 import { Badge } from "@mui/material";
 import styled from "styled-components";
-
+import { mobile } from "../responsive"
 const Container = styled.div`
-height: 62px;
+height: 60px;
+${mobile({ height: "50px" })}
 `;
 const Wrapper = styled.div`
 padding: 10px 20px;
 display: flex; /* side by side */
 justify-content: space-between; /* space bettwen items */
 align-items: center;
+${mobile({ padding: "10px 0px" })}
+
 `;
 const Left = styled.div`
 flex: 1;
@@ -20,6 +23,8 @@ align-items: center;
 const Language = styled.span`
 font-size: 14px;
 cursor: pointer;
+${mobile({ diplay: "none" })}
+
 `;
 const Center = styled.div`
 flex: 1;
@@ -29,6 +34,8 @@ flex: 1;
 display: flex;
 align-items: center;
 justify-content: flex-end;
+${mobile({ flex: 2, justifyContent: "center" })}
+
 `;
 const SearchContainer = styled.div`
 border: 0.5px solid lightgray;
@@ -39,28 +46,34 @@ padding: 5px;
 `;
 const Input = styled.input`
 border: none;
+${mobile({ width: "20px" })}
+
 `;
 const Logo = styled.div`
 font-weight: bold;
 text-align: center;
+${mobile({ fontSize: "24px" })}
+
 `;
 const MenuItem = styled.div`
 font-size: 14x;
 cursor: pointer;
-margin: 25px;
+margin-left: 25px;
+${mobile({ fontSize: "12px", marginLeft: "10px" })}
+
 `;
 const Navbar = () => {
- 
+
     return (
         <Container>
             <Wrapper>
                 <Left>
-          <Language>EN</Language>
-          <SearchContainer>
-            <Input placeholder="Search" />
-            <Search style={{ color: "gray", fontSize: 16 }} />
-          </SearchContainer>
-        </Left>
+                    <Language>EN</Language>
+                    <SearchContainer>
+                        <Input placeholder="Search" />
+                        <Search style={{ color: "gray", fontSize: 16 }} />
+                    </SearchContainer>
+                </Left>
                 <Center>
                     <Logo>Nader</Logo>
                 </Center>
