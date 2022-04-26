@@ -1,5 +1,4 @@
 const jwt = require("jsonwebtoken");
-const router = require("./user");
 const verifyToken = (req, res, next) => {
     const authHeader = req.headers.token
     if (authHeader) {
