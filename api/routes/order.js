@@ -14,6 +14,7 @@ router.post("/", async (req, res) => {
     res.status(200).json(savedOrder);
   } catch (err) {
     res.status(500).json(err);
+    console.error('API Error:', err.message || err)
   }
 });
 /* UPDATE product by id */
@@ -30,6 +31,7 @@ router.put("/:id", verifyTokenAndAdmin, async (req, res) => {
     res.status(200).json(updateOrder);
   } catch (err) {
     res.status(500).json(err);
+    console.error('API Error:', err.message || err)
   }
 });
 /* delete product by id */
@@ -40,6 +42,7 @@ router.delete("/:id", verifyTokenAndAdmin, async (req, res) => {
     res.status(200).json("Order has been deleted...");
   } catch (err) {
     res.status(500).json(err);
+    console.error('API Error:', err.message || err)
   }
 });
 
@@ -50,6 +53,7 @@ router.get("/find/:userId", async (req, res) => {
     res.status(200).json(order);
   } catch (err) {
     res.status(500).json(err);
+    console.error('API Error:', err.message || err)
   }
 });
 /* get all Orders */
@@ -59,6 +63,7 @@ router.get("/", verifyTokenAndAdmin, async (req, res) => {
     res.status(200).json(orders);
   } catch (err) {
     res.status(500).json(err);
+    console.error('API Error:', err.message || err)
   }
 });
 // GET MONTHLY INCOME
@@ -86,6 +91,7 @@ router.get("/income", async (req, res) => {
     res.status(200).json(income);
   } catch (err) {
     res.status(500).json(err);
+    console.error('API Error:', err.message || err)
   }
 });
 module.exports = router;

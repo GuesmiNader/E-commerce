@@ -2,7 +2,9 @@ const router = require("express").Router();
 const User = require("../models/User");
 const CryptoJS = require("crypto-js");
 const jwt = require("jsonwebtoken");
-/* REGISTER */
+const dotenv = require("dotenv");
+dotenv.config();
+//REGISTER
 router.post("/register", async (req, res) => {
   const newUser = new User({
     username: req.body.username,
@@ -12,32 +14,32 @@ router.post("/register", async (req, res) => {
       process.env.PASS_SEC
     ).toString(),
   });
+
   try {
     const savedUser = await newUser.save();
-    res.status(200).json(savedUser);
+    res.status(201).json(savedUser);
   } catch (err) {
     res.status(500).json(err);
+    console.error("API Error:", err.message || err);
   }
 });
-/* LOGIN */
+
+//LOGIN
+
 router.post("/login", async (req, res) => {
   try {
-    const user = await User.findOne({
-      username: req.body.username,
-    });
-
-    !user && res.status(401).json("Wrong User Name");
+    const user = await User.findOne({ username: req.body.username });
+    if (!user) return res.status(401).json("Wrong credentials!");
 
     const hashedPassword = CryptoJS.AES.decrypt(
       user.password,
       process.env.PASS_SEC
     );
 
-    const originalPassword = hashedPassword.toString(CryptoJS.enc.Utf8);
+    const OriginalPassword = hashedPassword.toString(CryptoJS.enc.Utf8);
 
-    const inputPassword = req.body.password;
-
-    originalPassword != inputPassword && res.status(401).json("Wrong Password");
+    if (OriginalPassword !== req.body.password)
+      return res.status(401).json("Wrong credentials!");
 
     const accessToken = jwt.sign(
       {
@@ -49,10 +51,12 @@ router.post("/login", async (req, res) => {
     );
 
     const { password, ...others } = user._doc;
+
     res.status(200).json({ ...others, accessToken });
   } catch (err) {
-     res.status(500).json(err);
+    res.status(500).json(err);
+    console.error("API Error:", err.message || err);
   }
 });
+
 module.exports = router;
- 

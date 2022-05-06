@@ -5,7 +5,9 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import Newsletter from "../components/Newsletter";
 import { mobile } from "../utils/responsive";
-
+import { useLocation } from "react-router";
+import { useEffect, useState } from "react";
+import axios from 'axios';
 const Container = styled.div``;
 
 const Wrapper = styled.div`
@@ -116,6 +118,19 @@ const Button = styled.button`
 `;
 
 const Product = () => {
+  const location = useLocation();
+  const id = location.pathname.split("/")[2];
+  const[product,setProduct]=useState({});
+  useEffect(()=>{
+    const getProduct = async ()=>{
+      const res = await axios.get(
+        cat
+          ? `http://localhost:5000/api/products?category=${cat}`
+          : "http://localhost:5000/api/products"
+      );
+      setProducts(res.data);
+    }
+  })
   return (
     <Container>
       <Navbar />

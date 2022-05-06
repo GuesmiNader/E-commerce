@@ -4,6 +4,8 @@ import {
   ShoppingCartOutlined,
 } from "@material-ui/icons";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
+import { useLocation } from "react-router";
 
 const Info = styled.div`
   opacity: 0;
@@ -67,6 +69,8 @@ const Icon = styled.div`
 `;
 
 const Product = ({ item }) => {
+  const location = useLocation();
+  const cat = location.pathname.split("/")[2];
   return (
     <Container>
       <Circle />
@@ -76,7 +80,9 @@ const Product = ({ item }) => {
           <ShoppingCartOutlined />
         </Icon>
         <Icon>
+          <Link to={`/product/${item._id}`}>
           <SearchOutlined />
+          </Link>
         </Icon>
         <Icon>
           <FavoriteBorderOutlined />

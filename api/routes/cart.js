@@ -14,6 +14,7 @@ router.post("/", async (req, res) => {
     res.status(200).json(savedCart);
   } catch (err) {
     res.status(500).json(err);
+    console.error('API Error:', err.message || err)
   }
 });
 /* UPDATE product by id */
@@ -30,6 +31,7 @@ router.put("/:id", verifyTokenAndAuthorization, async (req, res) => {
     res.status(200).json(updateCart);
   } catch (err) {
     res.status(500).json(err);
+    console.error('API Error:', err.message || err)
   }
 });
 /* delete product by id */
@@ -40,6 +42,7 @@ router.delete("/:id", verifyTokenAndAuthorization, async (req, res) => {
     res.status(200).json("Cart has been deleted...");
   } catch (err) {
     res.status(500).json(err);
+    console.error('API Error:', err.message || err)
   }
 });
 
@@ -50,6 +53,7 @@ router.get("/find/:userId", async (req, res) => {
     res.status(200).json(cart);
   } catch (err) {
     res.status(500).json(err);
+    console.error('API Error:', err.message || err)
   }
 });
 /* get all product */
@@ -59,6 +63,7 @@ router.get("/", verifyTokenAndAdmin, async (req, res) => {
     res.status(200).json(carts);
   } catch (err) {
     res.status(500).json(err);
+    console.error('API Error:', err.message || err)
   }
 });
 
